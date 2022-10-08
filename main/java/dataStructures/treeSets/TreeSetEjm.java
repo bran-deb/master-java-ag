@@ -8,6 +8,7 @@ public class TreeSetEjm {
     public static void main(String[] args) {
         //ordenar de forma ascendente  con comparator
         Set<String> treeSet = new TreeSet<>(Comparator.reverseOrder());
+        //Set<String> treeSet = new TreeSet<>(Comparator.naturalOrder());
         treeSet.add("uno");
         treeSet.add("dos");
         treeSet.add("tres");
