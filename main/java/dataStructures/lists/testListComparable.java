@@ -1,4 +1,4 @@
-package dataStructures.hashSets;
+package dataStructures.lists;
 
 import dataStructures.modelos.Alumno;
 
