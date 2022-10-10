@@ -1,4 +1,4 @@
-package dataStructures.treeSets;
+package dataStructures.sets.treeSets;
 
 import java.util.Comparator;
 import java.util.Set;
