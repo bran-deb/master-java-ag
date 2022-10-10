@@ -5,7 +5,7 @@ import dataStructures.modelos.Alumno;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArraylistTest {
+public class ArrayListTest {
 
     public static void main(String[] args) {
 
