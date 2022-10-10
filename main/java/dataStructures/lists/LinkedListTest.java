@@ -3,6 +3,7 @@ package dataStructures.lists;
 import dataStructures.modelos.Alumno;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class LinkedListTest {
 
@@ -58,5 +59,18 @@ public class LinkedListTest {
         alumnos.set(0, new Alumno("pedri", 6));
         System.out.println("alumnos = " + alumnos);
 
+
+        System.out.println("===== Iterator =====");
+        ListIterator<Alumno> listIterator = alumnos.listIterator();
+
+        System.out.println("recorrido normal");
+        while (listIterator.hasNext()){
+            System.out.println(listIterator.next());
+        }
+
+        System.out.println("recorrido invertido");
+        while (listIterator.hasPrevious()){
+            System.out.println(listIterator.previous());
+        }
     }
 }
