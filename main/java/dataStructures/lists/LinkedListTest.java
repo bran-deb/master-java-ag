@@ -24,7 +24,9 @@ public class LinkedListTest {
         System.out.println("\nAdd primer & ultimo alumno");
         System.out.println("alumnos = " + alumnos);
         alumnos.addFirst(new Alumno("Zeus", 5));
+//        alumnos.push(new Alumno("Zeus", 4));//equivalent to addFirst.
         alumnos.addLast(new Alumno("Pepito", 1));
+//        alumnos.add(new Alumno("Pepito", 1));//equivalent to addLast.
         System.out.println("alumnos = " + alumnos);
 
         System.out.println("\nobtener primer & ultimo alumno");
@@ -36,7 +38,7 @@ public class LinkedListTest {
         System.out.println("alumnos = " + alumnos);
         //eliminamos y guardamos para usar después
         Alumno alumnoEliminado = alumnos.removeFirst();
-//        Alumno alumnoEliminado = alumnos.pop();
+//        Alumno alumnoEliminado = alumnos.pop();//equivalent to removeFirst().
 //        Alumno alumnoEliminado = alumnos.pollFirst();//retorna null
         System.out.println("alumnoEliminado = " + alumnoEliminado);
 
