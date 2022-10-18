@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class HashMappTest {
+public class HashMapIterableTest {
     public static void main(String[] args) {
         //No permite llaves repetidas
         Map<String, Object> persona = new HashMap<>();
