@@ -1,4 +1,4 @@
-package anotaciones;
+package anotaciones.decorators;
 
 import java.lang.annotation.*;
 
