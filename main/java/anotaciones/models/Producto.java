@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class Producto {
 
     //@JsonAtributo
-    @JsonAtributo(nombre = "descripcion")//si no tiene definido usa nombre default(nombre)
+    @JsonAtributo(nombre = "descripcion",capitalizar = true)//si no tiene definido usa nombre default(nombre)
     private String nombre;
     @JsonAtributo(nombre = "costo")
     private Long precio;
