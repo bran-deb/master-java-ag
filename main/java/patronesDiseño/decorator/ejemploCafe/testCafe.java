@@ -6,7 +6,7 @@ import patronesDiseño.decorator.ejemploCafe.decorators.LecheDecorador;
 
 public class testCafe {
     public static void main(String[] args) {
-
+        //PATRON ESTRUCTURAL
         //Cafe cafe = new Cafe(15, "canela y chocolate");
         Configurable cafe = new Cafe(15, "cafe capuchino");
         System.out.println("cafe ingredientes = " + cafe.getIngredientes());

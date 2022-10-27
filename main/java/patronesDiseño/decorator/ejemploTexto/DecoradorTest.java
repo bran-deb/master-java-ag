@@ -6,6 +6,7 @@ import patronesDiseño.decorator.ejemploTexto.decorators.ReversaDecorador;
 
 public class DecoradorTest {
     public static void main(String[] args) {
+        //PATRON ESTRUCTURAL
         //AGREGA FUNCIONALIDAD DINÁMICA AL OBJETO
         //Texto texto = new Texto("Hola que tal Andres");
         TextoFormateable texto = new Texto("Hola que tal Andres");
