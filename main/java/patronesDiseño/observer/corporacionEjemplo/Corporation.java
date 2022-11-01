@@ -1,4 +1,6 @@
-package patronesDiseño.observer;
+package patronesDiseño.observer.corporacionEjemplo;
+
+import patronesDiseño.observer.Observable;
 
 public class Corporation extends Observable {
 

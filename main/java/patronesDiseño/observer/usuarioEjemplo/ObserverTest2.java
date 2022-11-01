@@ -1,4 +1,4 @@
-package patronesDiseño.observer;
+package patronesDiseño.observer.usuarioEjemplo;
 
 public class ObserverTest2 {
     public static void main(String[] args) {

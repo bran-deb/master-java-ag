@@ -1,6 +1,4 @@
-package patronesDiseño.observer.tests;
-
-import patronesDiseño.observer.Corporation;
+package patronesDiseño.observer.corporacionEjemplo;
 
 public class ObserverTest {
     public static void main(String[] args) {

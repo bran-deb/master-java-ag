@@ -1,4 +1,6 @@
-package patronesDiseño.observer;
+package patronesDiseño.observer.usuarioEjemplo;
+
+import patronesDiseño.observer.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
