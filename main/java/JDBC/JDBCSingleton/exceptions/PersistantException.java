@@ -1,4 +1,4 @@
-package JDBC.exceptions;
+package JDBC.JDBCSingleton.exceptions;
 
 public class PersistantException extends RuntimeException {
     public PersistantException(String message) {

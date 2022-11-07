@@ -1,4 +1,4 @@
-package JDBC.models;
+package JDBC.JDBCSingleton.models;
 
 import java.util.Date;
 
@@ -7,6 +7,7 @@ public class Product {
     private String nombre;
     private Integer precio;
     private Date fechaRegistro;
+    private Category category;
 
     public Product() {
     }
@@ -49,4 +50,22 @@ public class Product {
     public void setFechaRegistro(Date fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "|" + id +
+                "|" + nombre +
+                "|" + precio +
+                "|" + fechaRegistro +
+                "|" + category.getNombre() + "|";
+    }
+
 }

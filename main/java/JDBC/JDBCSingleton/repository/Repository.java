@@ -1,4 +1,4 @@
-package JDBC.repository;
+package JDBC.JDBCSingleton.repository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package JDBC.factory;
+package JDBC.JDBCSingleton.factory;
 
 import java.sql.Connection;
 
