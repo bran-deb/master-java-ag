@@ -1,20 +1,30 @@
 package testsJUnit5.models;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.*;
 import testsJUnit5.exceptions.DineroInsuficienteException;
 
 import java.math.BigDecimal;
+import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CuentaTest {
     Cuenta cuenta;
 
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Inicializando la clase test");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("finalizando la clase test");
+    }
+
     @BeforeEach
-    void initMethodTest() {
+    void setUp() {
         System.out.println("Iniciando el método");
         this.cuenta = new Cuenta("Andres", new BigDecimal("1000.123"));
     }
@@ -144,5 +154,68 @@ class CuentaTest {
                                     .equals("Jon Doe")), () -> "El nombre de la lista de cuentas no es el esperado");
                 }
         );
+    }
+
+    //Test para versiones de OS o versiones de JAVA
+    @Test
+    @DisplayName("Test habilitado solo en windows")
+    @EnabledOnOs(OS.WINDOWS)
+    void testSoloEnWindows() {
+    }
+
+    @Test
+    @DisplayName("Test habilitado solo para Linux y Mac")
+    @EnabledOnOs({OS.LINUX, OS.MAC})
+    void testSoloLinuxMac() {
+    }
+
+    @Test
+    @DisplayName("Test deshabilitado para windows")
+    @DisabledOnOs(OS.WINDOWS)
+    void testNoWindows() {
+    }
+
+    @Test
+    @DisplayName("test habilitado solo en Java 8")
+    @EnabledOnJre(JRE.JAVA_8)
+    void testJDK8() {
+    }
+
+    @Test
+    @DisplayName("Test habilitado solo para Java 17")
+    @EnabledOnJre(JRE.JAVA_17)
+    void testJDK15() {
+    }
+
+    @Test
+    @DisplayName("Test deshabilitado para Java 15")
+    @DisabledOnJre(JRE.JAVA_15)
+    void testNoJDK15() {
+    }
+
+    //Obtiene nombres de las propiedades del sistema
+    @Test
+    @DisplayName("Test imprimir system properties")
+    void testImprimirSystemProperties() {
+        Properties properties = System.getProperties();
+        properties.forEach((x, y) -> System.out.println(x + ":" + y));
+    }
+
+    @Test
+    @DisplayName("Test disabled if user name DEB(System variable)")
+    @DisabledIfSystemProperty(named = "user.name", matches = "DEB")
+    void testJavaVersion() {
+    }
+
+    @Test
+    @DisplayName("Test habilitado para arquitecturas de 64 bits")
+    @EnabledIfSystemProperty(named = "os.arch", matches = ".*64.*")
+    void test64Bits() {
+    }
+
+    @Test
+    @DisplayName("Test habilitado solo en desarrollo")
+    @EnabledIfSystemProperty(named = "ENV", matches = "dev")
+    void testOnlyDev() {
     }
 }
