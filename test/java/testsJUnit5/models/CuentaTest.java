@@ -5,9 +5,11 @@ import org.junit.jupiter.api.condition.*;
 import testsJUnit5.exceptions.DineroInsuficienteException;
 
 import java.math.BigDecimal;
+import java.util.Map;
 import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 //@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CuentaTest {
@@ -142,17 +144,13 @@ class CuentaTest {
                 () -> assertEquals("2000.123", cuenta2.getSaldo().toPlainString(), () -> "El saldo no es el esperado"),
                 () -> assertEquals(2, banco.getCuentas().size(), () -> "El numero de cuentas no es el esperado"),
                 () -> assertEquals("BancoSol", cuenta1.getBanco().getNombre(), () -> "El nombre del banco no es el esperado"),
-                () -> {
-                    assertEquals("Jon Doe", banco.getCuentas().stream()
-                            .filter(cuenta -> cuenta.getPersona().equals("Jon Doe"))
-                            .findFirst()
-                            .get().getPersona(), () -> "El nombre de la lista de cuentas no es el esperado");
-                },
-                () -> {
-                    assertTrue(banco.getCuentas().stream()
-                            .anyMatch(cuenta -> cuenta.getPersona()
-                                    .equals("Jon Doe")), () -> "El nombre de la lista de cuentas no es el esperado");
-                }
+                () -> assertEquals("Jon Doe", banco.getCuentas().stream()
+                        .filter(cuenta -> cuenta.getPersona().equals("Jon Doe"))
+                        .findFirst()
+                        .get().getPersona(), () -> "El nombre de la lista de cuentas no es el esperado"),
+                () -> assertTrue(banco.getCuentas().stream()
+                        .anyMatch(cuenta -> cuenta.getPersona()
+                                .equals("Jon Doe")), () -> "El nombre de la lista de cuentas no es el esperado")
         );
     }
 
@@ -217,5 +215,48 @@ class CuentaTest {
     @DisplayName("Test habilitado solo en desarrollo")
     @EnabledIfSystemProperty(named = "ENV", matches = "dev")
     void testOnlyDev() {
+    }
+
+    @Test
+    @DisplayName("Test imprimir variables ambiente")
+    void imprimirVariablesAmbiente() {
+        Map<String, String> getenv = System.getenv();
+        getenv.forEach((k, v) -> System.out.println(k + " = " + v));
+    }
+
+    @Test
+    @DisplayName("Test Java Home")
+    @EnabledIfEnvironmentVariable(named = "JAVA_HOME", matches = ".*jdk-14*")
+    void testJavaHome(){
+    }
+
+    @Test
+    @DisplayName("Test Numero Procesadores")
+    @DisabledIfEnvironmentVariable(named = "NUMBER_OF_PROCESSORS",matches = "8")
+    void testProcesadores(){
+    }
+
+    @Test
+    @DisplayName("Test deshabilitado en producción")
+    @DisabledIfEnvironmentVariable(named = "ENVIRONMENT", matches = "prod")
+    void testEnv(){
+    }
+
+    @Test
+    @DisplayName("Test habilitado en desarrollo")
+    @EnabledIfEnvironmentVariable(named = "ENVIRONMENT",matches = "dev")
+    void testProd(){
+    }
+
+    @Test
+    @DisplayName("Test saldo de la cuenta cuando esta en desarrollo")
+    void testSaldoCuentaDev() {
+        boolean esDev = "DEV".equals(System.getProperty("ENV"));
+        Double expected = 1000.123;
+        BigDecimal current = cuenta.getSaldo();
+        assertNotNull(current, () -> "La cuenta no puede ser nula");
+        assertEquals(expected, current.doubleValue(), () -> "El saldo de la cuenta no es el esperado");
+        assertFalse(current.compareTo(BigDecimal.ZERO) < 0);
+        assertTrue(current.compareTo(BigDecimal.ZERO) > 0);
     }
 }
